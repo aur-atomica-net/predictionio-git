@@ -1,0 +1,14 @@
+post_install() {
+  groupadd -r -f predictionio
+  useradd -r -g predictionio -s /usr/bin/nologin -d /var/lib/predictionio predictionio || true
+
+  [[ ! -d /var/lib/predictionio ]] &&
+  install -d /var/lib/predictionio
+
+  chown -R predictionio:predictionio /var/lib/predictionio
+}
+
+post_remove() {
+  /usr/sbin/userdel predictionio
+  /usr/sbin/groupdel predictionio
+}
