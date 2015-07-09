@@ -49,13 +49,19 @@ package() {
 
   tar -xf ${TARNAME}
 
-  install -d "$pkgdir/opt/"
+  install -d "${pkgdir}/usr/bin" "${pkgdir}/opt/"
 
-  cp -r "${srcdir}/${_gitname}/${TARDIR}" "$pkgdir/opt/predictionio"
+  cp -r "${srcdir}/${_gitname}/${TARDIR}" "${pkgdir}/opt/predictionio"
 
   install -Dm644 "${srcdir}/predictionio-eventserver.service" "${pkgdir}/usr/lib/systemd/system/predictionio-eventserver.service"
   install -Dm644 "${srcdir}/pio-env.sh" "${pkgdir}/etc/predictionio/pio-env.sh"
 
-  cd "$pkgdir/opt/predictionio/conf"
-  ln -sf "/etc/predictionio/spark-env.sh" .
+  cd "${pkgdir}/usr/bin"
+  for binary in pio; do
+    binpath="/opt/predictionio/bin/${binary}"
+    ln -s "${binpath}" ${binary}
+  done
+
+  cd "${pkgdir}/opt/predictionio/conf"
+  ln -sf "/etc/predictionio/pio-env.sh" .
 }
