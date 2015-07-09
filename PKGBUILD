@@ -28,7 +28,9 @@ sha256sums=(
   '0865ed8b9c13c61ff01616ec43f056c2aac0de041f79aeaf5145748f5ceecf38'
   '9fd91b3d3e9a769d3e864dfeaf999627aee690468d132707b3d19a3ddc8e7efc'
 )
-backup=()
+backup=(
+  'etc/predictionio/pio-env.sh'
+)
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -49,18 +51,12 @@ package() {
 
   tar -xf ${TARNAME}
 
-  install -d "${pkgdir}/usr/bin" "${pkgdir}/opt/"
+  install -d "${pkgdir}/opt/"
 
   cp -r "${srcdir}/${_gitname}/${TARDIR}" "${pkgdir}/opt/predictionio"
 
   install -Dm644 "${srcdir}/predictionio-eventserver.service" "${pkgdir}/usr/lib/systemd/system/predictionio-eventserver.service"
   install -Dm644 "${srcdir}/pio-env.sh" "${pkgdir}/etc/predictionio/pio-env.sh"
-
-  cd "${pkgdir}/usr/bin"
-  for binary in pio pio-shell; do
-    binpath="/opt/predictionio/bin/${binary}"
-    ln -s "${binpath}" ${binary}
-  done
 
   cd "${pkgdir}/opt/predictionio/conf"
   ln -sf "/etc/predictionio/pio-env.sh" .
