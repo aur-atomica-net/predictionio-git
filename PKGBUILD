@@ -20,7 +20,7 @@ optdepends=(
 install='predictionio.install'
 source=(
     'git+https://github.com/PredictionIO/PredictionIO.git'
-    'predictionio.service'
+    'predictionio-eventserver.service'
     'pio-env.sh'
 )
 sha256sums=(
@@ -53,7 +53,7 @@ package() {
 
   cp -r "${srcdir}/${_gitname}/${TARDIR}" "$pkgdir/opt/predictionio"
 
-  install -Dm644 "${srcdir}/predictionio.service" "${pkgdir}/usr/lib/systemd/system/predictionio.service"
+  install -Dm644 "${srcdir}/predictionio-eventserver.service" "${pkgdir}/usr/lib/systemd/system/predictionio-eventserver.service"
   install -Dm644 "${srcdir}/pio-env.sh" "${pkgdir}/etc/predictionio/pio-env.sh"
 
   cd "$pkgdir/usr/share/predictionio/conf"
