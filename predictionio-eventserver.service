@@ -6,7 +6,7 @@ After=network.target
 User=predictionio
 Group=predictionio
 WorkingDirectory=/var/lib/predictionio
-ExecStart=/opt/predictionio/bin/pio eventserver
+ExecStart=/usr/share/predictionio/bin/pio eventserver
 
 [Install]
 WantedBy=multi-user.target
