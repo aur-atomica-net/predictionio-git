@@ -5,6 +5,7 @@ After=network.target
 [Service]
 User=predictionio
 Group=predictionio
+WorkingDirectory=/var/lib/predictionio
 ExecStart=/opt/predictionio/bin/pio eventserver
 
 [Install]
