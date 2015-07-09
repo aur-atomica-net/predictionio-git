@@ -57,7 +57,7 @@ package() {
   install -Dm644 "${srcdir}/pio-env.sh" "${pkgdir}/etc/predictionio/pio-env.sh"
 
   cd "${pkgdir}/usr/bin"
-  for binary in pio; do
+  for binary in pio pio-shell; do
     binpath="/opt/predictionio/bin/${binary}"
     ln -s "${binpath}" ${binary}
   done
