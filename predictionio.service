@@ -5,10 +5,7 @@ After=network.target
 [Service]
 User=predictionio
 Group=predictionio
-# Environment=SPARK_LOG_DIR=/var/lib/predictionio/logs
-# PIDFile=/var/lib/predictionio/spark-daemon.pid
-# ExecStart=/usr/share/predictionio/bin/pio eventserver
-# ExecStop=/usr/share/predictionio/sbin/stop-all.sh
+ExecStart=/usr/share/predictionio/bin/pio eventserver
 
 [Install]
 WantedBy=multi-user.target
