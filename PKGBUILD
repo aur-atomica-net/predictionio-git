@@ -63,7 +63,7 @@ package() {
     binpath="/usr/share/predictionio/bin/$binary"
     ln -s "$binpath" $binary
     # Because we'll be symlinking we need to override the installation directory detection
-    sed -i 's|^export FWDIR=.*$|export FWDIR=/usr/share/predictionio|' "$pkgdir/$binpath"
+    sed -i 's|^FWDIR=.*$|FWDIR=/usr/share/predictionio|' "$pkgdir/$binpath"
   done
 
   cd "${pkgdir}/usr/share/predictionio/conf"
