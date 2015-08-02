@@ -67,6 +67,7 @@ package() {
     binpath="/usr/share/predictionio/bin/$binary"
     ln -s "$binpath" $binary
     # Because we'll be symlinking we need to override the installation directory detection
+    sed -i 's|PIO_HOME=.*$|PIO_HOME=/usr/share/predictionio|' "$pkgdir/$binpath"
     sed -i 's|^FWDIR=.*$|FWDIR=/usr/share/predictionio|' "$pkgdir/$binpath"
   done
 
