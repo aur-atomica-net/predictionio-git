@@ -19,7 +19,7 @@ optdepends=(
 )
 install='predictionio.install'
 source=(
-    'git+https://github.com/PredictionIO/PredictionIO.git'
+    'git+https://github.com/PredictionIO/PredictionIO.git#branch=develop'
     'predictionio-eventserver.service'
     'pio-env.sh'
 )
@@ -39,6 +39,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
+
+  # Workaround for https://github.com/PredictionIO/PredictionIO/issues/131
+  curl -L http://dl.bintray.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.7/sbt-launch.jar -o ./sbt/sbt-launch-0.13.7.jar
+
   JAVA_HOME=/usr/lib/jvm/default-runtime ./make-distribution.sh
 }
 
