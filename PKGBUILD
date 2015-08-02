@@ -58,7 +58,7 @@ package() {
   install -d "${pkgdir}/usr/bin/" "${pkgdir}/usr/share/"
 
   cp -r "${srcdir}/${_gitname}/${TARDIR}" "${pkgdir}/usr/share/predictionio"
-  cp "${srcdir}/${_gitname}/sbt/sbt-launch*.jar" "${pkgdir}/usr/share/predictionio/sbt/"
+  cp "${srcdir}/${_gitname}"/sbt/sbt-launch-*.jar "${pkgdir}/usr/share/predictionio/sbt/"
 
   install -Dm644 "${srcdir}/predictionio-eventserver.service" "${pkgdir}/usr/lib/systemd/system/predictionio-eventserver.service"
   install -Dm644 "${srcdir}/pio-env.sh" "${pkgdir}/etc/predictionio/pio-env.sh"
