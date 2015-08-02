@@ -19,7 +19,7 @@ optdepends=(
 )
 install='predictionio.install'
 source=(
-    'git+https://github.com/PredictionIO/PredictionIO.git#branch=develop'
+    'git+https://github.com/PredictionIO/PredictionIO.git#branch=master'
     'predictionio-eventserver.service'
     'pio-env.sh'
 )
