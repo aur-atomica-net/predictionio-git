@@ -4,7 +4,7 @@ _pkgname=predictionio
 _gitname=PredictionIO
 pkgname=${_pkgname}-git
 pkgver=v0.9.3.r23.gb399cc6
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source machine learning server"
 arch=('any')
 url="https://prediction.io"
@@ -58,6 +58,7 @@ package() {
   install -d "${pkgdir}/usr/bin/" "${pkgdir}/usr/share/"
 
   cp -r "${srcdir}/${_gitname}/${TARDIR}" "${pkgdir}/usr/share/predictionio"
+  cp "${srcdir}/${_gitname}/sbt/sbt-launch*.jar" "${pkgdir}/usr/share/predictionio/sbt/"
 
   install -Dm644 "${srcdir}/predictionio-eventserver.service" "${pkgdir}/usr/lib/systemd/system/predictionio-eventserver.service"
   install -Dm644 "${srcdir}/pio-env.sh" "${pkgdir}/etc/predictionio/pio-env.sh"
